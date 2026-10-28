@@ -1,33 +1,39 @@
 const mongoose = require('mongoose');
 
 // Cache database connection for serverless environments (Vercel)
-let cachedConnection = null;
+let cachedPromise = null;
 
 const connectDB = async () => {
-  if (cachedConnection && mongoose.connection.readyState === 1) {
-    return cachedConnection;
+  // If already connected, return the existing connection
+  if (mongoose.connection.readyState === 1) {
+    return mongoose.connection;
+  }
+
+  // If a connection attempt is currently in flight, return that promise
+  if (cachedPromise) {
+    return cachedPromise;
   }
 
   const mongoURI = process.env.MONGO_URI;
 
-  if (!mongoURI) {
-    console.error('❌ MONGO_URI environment variable is missing.');
-    console.error('Please create a backend/.env file and set your MongoDB Atlas connection string.');
-    console.error('Example: MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/findit?retryWrites=true&w=majority');
+  // Validate presence and that it is not the default unconfigured template
+  if (!mongoURI || mongoURI.includes('<username>') || mongoURI.includes('<password>') || mongoURI.includes('example.mongodb.net')) {
+    console.warn('⚠️  MONGO_URI is missing or contains placeholder values (<username>, <password>).');
+    console.warn('👉 Please update backend/.env with your actual MongoDB Atlas connection string.');
     return null;
   }
 
   try {
-    const conn = await mongoose.connect(mongoURI, {
-      serverSelectionTimeoutMS: 5000 // Keep timeout reasonable for rapid feedback
+    cachedPromise = mongoose.connect(mongoURI, {
+      serverSelectionTimeoutMS: 5000 // 5-second timeout to avoid long hangs
     });
 
-    cachedConnection = conn;
-    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
+    const conn = await cachedPromise;
+    console.log(`✅ MongoDB Connected successfully to host: ${conn.connection.host}`);
     return conn;
   } catch (error) {
+    cachedPromise = null; // Reset so subsequent requests can retry
     console.error(`❌ MongoDB Connection Error: ${error.message}`);
-    // Don't crash immediately so /api/health can still inform user of db status
     return null;
   }
 };

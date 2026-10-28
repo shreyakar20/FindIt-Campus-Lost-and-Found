@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Edit2, AlertCircle, Calendar, MapPin, Tag, UserCheck, FileText, CheckCircle2 } from 'lucide-react';
+import { X, Edit2, AlertCircle, Calendar, MapPin, Tag, UserCheck, FileText } from 'lucide-react';
 
 const CATEGORIES = [
   'Electronics',

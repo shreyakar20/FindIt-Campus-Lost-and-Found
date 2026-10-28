@@ -1,7 +1,7 @@
 import React from 'react';
-import { Compass, PlusCircle, Sparkles, ShieldCheck } from 'lucide-react';
+import { Compass, PlusCircle } from 'lucide-react';
 
-const Navbar = ({ onOpenReportModal, backendConnected, totalCount }) => {
+const Navbar = ({ onOpenReportModal, backendConnected }) => {
   return (
     <header className="navbar">
       <div className="navbar-container">

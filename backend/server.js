@@ -24,26 +24,19 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Ensure DB is connected on each incoming request (especially on serverless/Vercel)
-app.use(async (req, res, next) => {
-  if (mongoose.connection.readyState !== 1) {
-    await connectDB();
-  }
-  next();
-});
-
-// Health check endpoint
+// 1. Health check endpoint (placed before DB connection middleware so it responds instantly)
 app.get('/api/health', (req, res) => {
-  const dbStatus = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
+  const isConnected = mongoose.connection.readyState === 1;
   res.status(200).json({
     status: 'healthy',
     message: 'FindIt API is running smoothly',
-    database: dbStatus,
+    database: isConnected ? 'connected' : 'disconnected',
+    readyState: mongoose.connection.readyState,
     timestamp: new Date().toISOString()
   });
 });
 
-// Welcome / Root route
+// 2. Root documentation route
 app.get('/', (req, res) => {
   res.json({
     project: 'FindIt — Campus Lost & Found Portal API',
@@ -53,10 +46,18 @@ app.get('/', (req, res) => {
   });
 });
 
-// Mount Item Routes
+// 3. Ensure DB is connected for incoming API requests
+app.use(async (req, res, next) => {
+  if (mongoose.connection.readyState !== 1) {
+    await connectDB();
+  }
+  next();
+});
+
+// 4. Mount Item Routes
 app.use('/api/items', itemsRouter);
 
-// 404 Route Handler
+// 5. 404 Route Handler
 app.use((req, res, next) => {
   res.status(404).json({
     success: false,
@@ -64,7 +65,7 @@ app.use((req, res, next) => {
   });
 });
 
-// Global Error Handler
+// 6. Global Error Handler
 app.use((err, req, res, next) => {
   console.error('Unhandled Server Error:', err);
   res.status(err.status || 500).json({

@@ -5,6 +5,20 @@ const Item = require('../models/Item');
 const router = express.Router();
 
 /**
+ * Middleware: Verify database connection before performing database queries
+ */
+router.use((req, res, next) => {
+  if (mongoose.connection.readyState !== 1) {
+    return res.status(503).json({
+      success: false,
+      message: 'Database is not connected. Please configure your MongoDB Atlas connection string (MONGO_URI) in backend/.env.',
+      database: 'disconnected'
+    });
+  }
+  next();
+});
+
+/**
  * Helper: Validate MongoDB ObjectId
  */
 const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);

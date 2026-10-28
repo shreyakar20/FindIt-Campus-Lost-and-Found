@@ -7,9 +7,7 @@ import {
   Edit2,
   Trash2,
   CheckCheck,
-  CheckCircle2,
-  AlertTriangle,
-  Info
+  CheckCircle2
 } from 'lucide-react';
 
 const ItemCard = ({ item, onEdit, onDelete, onQuickMarkReturned }) => {
