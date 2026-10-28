@@ -1,0 +1,24 @@
+{
+  "name": "findit-campus-portal",
+  "version": "1.0.0",
+  "description": "FindIt — Campus Lost & Found Portal (MERN Full-Stack Application)",
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "backend": "cd backend && npm run start",
+    "backend:dev": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm run dev",
+    "frontend:build": "cd frontend && npm run build",
+    "seed": "cd backend && npm run seed",
+    "test": "cd backend && npm test"
+  },
+  "keywords": [
+    "mern",
+    "react",
+    "express",
+    "mongodb",
+    "lost-and-found",
+    "campus-portal"
+  ],
+  "author": "FindIt Team",
+  "license": "ISC"
+}
