@@ -11,9 +11,11 @@
 ---
 
 ## 📌 Links & Live Deployment
-* **Live Web Portal**: `https://findit-campus-frontend.vercel.app` *(Placeholder - add your link upon Vercel deploy)*
-* **Backend REST API**: `https://findit-campus-backend.vercel.app` *(Placeholder - add your link upon Vercel deploy)*
-* **GitHub Repository**: `https://github.com/<your-username>/findit-campus-portal` *(Placeholder)*
+* **GitHub Repository**: [https://github.com/shreyakar20/FindIt-Campus-Lost-and-Found](https://github.com/shreyakar20/FindIt-Campus-Lost-and-Found)
+* **Vercel Project Dashboard**: [https://vercel.com/shreya-27d2](https://vercel.com/shreya-27d2)
+* **Live Web Portal**: [https://findit-campus-lost-and-found.vercel.app](https://findit-campus-lost-and-found.vercel.app)
+* **Backend REST API**: [https://findit-campus-lost-and-found.vercel.app/api/items](https://findit-campus-lost-and-found.vercel.app/api/items)
+* **API Health Check**: [https://findit-campus-lost-and-found.vercel.app/api/health](https://findit-campus-lost-and-found.vercel.app/api/health)
 
 ---
 

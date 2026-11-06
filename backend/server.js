@@ -31,7 +31,8 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({
     status: 'healthy',
     message: 'FindIt API is running smoothly',
-    database: isConnected ? 'connected' : 'disconnected',
+    database: isConnected ? 'connected' : 'in-memory-demo',
+    mode: isConnected ? 'MongoDB Live' : 'In-Memory Fallback',
     readyState: mongoose.connection.readyState,
     timestamp: new Date().toISOString()
   });
