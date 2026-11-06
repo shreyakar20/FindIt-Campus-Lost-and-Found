@@ -44,3 +44,6 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+# Ignore all environment-specific files
+.env.*
+!.env.example

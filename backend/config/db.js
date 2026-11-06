@@ -15,6 +15,7 @@ const connectDB = async () => {
   }
 
   const mongoURI = process.env.MONGO_URI;
+  
 
   // Validate presence and that it is not the default unconfigured template
   if (!mongoURI || mongoURI.includes('<username>') || mongoURI.includes('<password>') || mongoURI.includes('example.mongodb.net')) {
