@@ -11,12 +11,12 @@
 ---
 
 ## 📌 Links & Live Deployment
-* **GitHub Repository**: [https://github.com/shreyakar20/FindIt-Campus-Lost-and-Found](https://github.com/shreyakar20/FindIt-Campus-Lost-and-Found)
-* **Vercel Project Dashboard**: [https://vercel.com/shreya-27d2](https://vercel.com/shreya-27d2)
-* **Live Web Portal**: [https://findit-campus-lost-and-found.vercel.app](https://findit-campus-lost-and-found.vercel.app)
-* **Backend REST API**: [https://findit-campus-lost-and-found.vercel.app/api/items](https://findit-campus-lost-and-found.vercel.app/api/items)
-* **API Health Check**: [https://findit-campus-lost-and-found.vercel.app/api/health](https://findit-campus-lost-and-found.vercel.app/api/health)
 
+- **GitHub Repository:** [FindIt – Campus Lost & Found](https://github.com/shreyakar20/FindIt-Campus-Lost-and-Found)
+- **Vercel Project Dashboard:** [Vercel Dashboard](https://vercel.com/shreya-27d2)
+- **Live Web Portal:** [Open FindIt Website](https://findit-campus-lost-and-found.vercel.app/)
+- **Backend REST API:** [Render API](https://findit-campus-lost-and-found.onrender.com/api/items)
+- **API Health Check:** [Check API Health](https://findit-campus-lost-and-found.onrender.com/api/health)
 ---
 
 ## 📖 Table of Contents
